@@ -1,8 +1,8 @@
 import math
-import random
 
 from DataRW import dataReader
 import BackPropagation as BP
+import secrets
 
 
 
@@ -110,7 +110,7 @@ def roulette_selection(population, num_parents, elites=1):
         fitness_sum = 0
         for chromosome in population:
             fitness_sum += chromosome[3]
-        selection = random.uniform(0.0, fitness_sum)
+        selection = secrets.SystemRandom().uniform(0.0, fitness_sum)
         selection_sum = 0
         for j in range(len(population)):
             selection_sum += population[j][3]
@@ -141,11 +141,11 @@ def mutate_chromosome(chromosome, mutation_rate):
         # generate new val
         new_value = 0
         if (gInt):
-            new_value = round(random.randint(math.floor(searchMin), math.ceil(searchMax)))
+            new_value = round(secrets.SystemRandom().randint(math.floor(searchMin), math.ceil(searchMax)))
         else:
             adjustMin = round(searchMin * 10000)
             adjustMax = round(searchMax * 10000)
-            new_value = random.randint(adjustMin, adjustMax) / 10000
+            new_value = secrets.SystemRandom().randint(adjustMin, adjustMax) / 10000
         chromosome[key]['value'] = new_value
     return chromosome
 

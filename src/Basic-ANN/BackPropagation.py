@@ -1,13 +1,13 @@
 import math
-import random
 
 from DataRW import dataReader
+import secrets
 
 # import matplotlib.pyplot as plt
 
 
 def get_random(rand_min, rand_max):
-    return rand_min + ((rand_max - rand_min) * random.random())
+    return rand_min + ((rand_max - rand_min) * secrets.SystemRandom().random())
 
 
 # Translates range from [-1,1] to [0,1]
